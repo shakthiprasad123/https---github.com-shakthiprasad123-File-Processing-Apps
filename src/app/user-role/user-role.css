@@ -1,0 +1,138 @@
+.dashboard-wrapper {
+min-height: 100vh;
+background: #f4f7fb;
+padding: 30px;
+}
+
+.top-bar {
+background: linear-gradient(
+135deg,
+#1e3c72,
+#2a5298
+);
+
+color: white;
+
+padding: 25px 35px;
+
+border-radius: 15px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+margin-bottom: 25px;
+
+box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.top-bar h1 {
+margin: 0;
+font-size: 30px;
+}
+
+.top-bar p {
+margin-top: 8px;
+opacity: 0.9;
+}
+
+.nav-buttons {
+display: flex;
+gap: 12px;
+}
+
+.nav-btn {
+background: white;
+color: #1e3c72;
+border: none;
+padding: 10px 18px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+}
+
+.nav-btn:hover {
+transform: translateY(-2px);
+}
+
+.stats-container {
+margin-bottom: 25px;
+}
+
+.stat-card {
+width: 260px;
+background: linear-gradient(
+135deg,
+#1e3c72,
+#2a5298
+);
+
+color: white;
+
+border-radius: 15px;
+
+padding: 25px;
+
+text-align: center;
+
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card h2 {
+margin: 0;
+font-size: 40px;
+}
+
+.stat-card p {
+margin-top: 10px;
+}
+
+.table-card {
+background: white;
+
+border-radius: 15px;
+
+overflow: hidden;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,0.08);
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+thead {
+background: #1e3c72;
+}
+
+thead th {
+color: white;
+padding: 18px;
+text-align: left;
+}
+
+tbody td {
+padding: 16px 18px;
+border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+background: #f7faff;
+}
+
+.role-badge {
+background: #1e3c72;
+color: white;
+padding: 6px 14px;
+border-radius: 20px;
+font-size: 13px;
+font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+background: #fafafa;
+}

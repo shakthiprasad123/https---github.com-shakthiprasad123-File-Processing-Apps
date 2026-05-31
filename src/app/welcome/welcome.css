@@ -1,0 +1,230 @@
+body {
+
+  margin: 0;
+
+  font-family:
+  Arial,
+  Helvetica,
+  sans-serif;
+}
+
+.welcome-container {
+
+  min-height: 100vh;
+
+  background:
+  linear-gradient(
+    135deg,
+    #1e3c72,
+    #2a5298
+  );
+
+  color: white;
+}
+
+/* NAVBAR */
+
+.navbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 20px 40px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+
+  font-size: 28px;
+
+  font-weight: bold;
+}
+
+.nav-links {
+
+  display: flex;
+
+  gap: 12px;
+}
+
+.nav-links button {
+
+  background: white;
+
+  color: #1e3c72;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.logout-btn {
+
+  background: #ef4444 !important;
+
+  color: white !important;
+}
+
+/* HERO */
+
+.hero-section {
+
+  text-align: center;
+
+  padding-top: 70px;
+}
+
+.hero-section h1 {
+
+  font-size: 54px;
+
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+
+  font-size: 20px;
+
+  max-width: 700px;
+
+  margin: auto;
+}
+
+.hero-btn {
+
+  margin-top: 30px;
+
+  background: white;
+
+  color: #1e3c72;
+
+  border: none;
+
+  padding: 15px 35px;
+
+  border-radius: 10px;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+/* FEATURES */
+
+.features {
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 25px;
+
+  margin-top: 70px;
+
+  padding: 20px;
+}
+
+.feature-card {
+
+  width: 250px;
+
+  background:
+  rgba(255,255,255,0.12);
+
+  border:
+  1px solid rgba(255,255,255,0.2);
+
+  padding: 30px;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  backdrop-filter: blur(8px);
+
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+
+  transform:
+  translateY(-6px);
+}
+
+.icon {
+
+  font-size: 40px;
+
+  margin-bottom: 15px;
+}
+
+/* MODULES */
+
+.modules-section {
+
+  margin-top: 70px;
+
+  text-align: center;
+}
+
+.modules-section h2 {
+
+  margin-bottom: 30px;
+}
+
+.modules-grid {
+
+  display: grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap: 15px;
+
+  max-width: 1000px;
+
+  margin: auto;
+
+  padding: 20px;
+}
+
+.modules-grid div {
+
+  background:
+  rgba(255,255,255,0.12);
+
+  padding: 15px;
+
+  border-radius: 10px;
+}
+
+/* FOOTER */
+
+footer {
+
+  text-align: center;
+
+  margin-top: 70px;
+
+  padding: 30px;
+
+  background:
+  rgba(0,0,0,0.15);
+}

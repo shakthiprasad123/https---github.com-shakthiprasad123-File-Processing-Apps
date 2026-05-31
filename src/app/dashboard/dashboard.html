@@ -1,0 +1,392 @@
+<div class="dashboard-wrapper"> 
+
+  <!-- TOP BAR -->
+ <div class="top-bar">
+
+  <div>
+
+    <h1>
+      File Processing Dashboard
+    </h1>
+
+    <p>
+      Manage uploaded files
+    </p>
+
+  </div>
+
+  <div class="nav-buttons">
+
+    <button
+      class="nav-btn"
+      routerLink="/welcome"
+    >
+      Home
+    </button>
+
+    <button
+  *ngIf="role === 'Admin'"
+  class="nav-btn"
+  routerLink="/user-role"
+>
+  User Roles
+</button>
+    <button
+      class="logout-btn"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+  <!-- LOADING -->
+  <div
+    *ngIf="isLoading"
+    class="loading"
+  >
+    Uploading File...
+  </div>
+
+  <!-- UPLOAD -->
+  <div class="upload-card">
+
+    <div class="upload-left">
+
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+      />
+
+      <button
+        class="upload-btn"
+        (click)="uploadFile()"
+      >
+        Upload File
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+
+    <input
+      type="text"
+      placeholder="Search filename..."
+      [(ngModel)]="searchText"
+      (input)="searchFiles()"
+    />
+
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-container">
+
+    <div class="stat-card total-card">
+
+      <h2>
+        {{ files.length }}
+      </h2>
+
+      <p>
+        Total Files
+      </p>
+
+    </div>
+
+    <div class="stat-card success-card">
+
+      <h2>
+        {{
+          files.filter(
+            f => (f.STATUS || f.status) === 'Success'
+          ).length
+        }}
+      </h2>
+
+      <p>
+        Successful
+      </p>
+
+    </div>
+
+    <div class="stat-card failed-card">
+
+      <h2>
+        {{
+          files.filter(
+            f => (f.STATUS || f.status) === 'Failed'
+          ).length
+        }}
+      </h2>
+
+      <p>
+        Failed
+      </p>
+
+    </div>
+    <div class="stat-card archive-card">
+
+  <h2>
+    {{
+      files.filter(
+        f => (f.STATUS || f.status) === 'Archived'
+      ).length
+    }}
+  </h2>
+
+  <p>
+    Archived
+  </p>
+
+</div>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>ID</th>
+
+          <th>Filename</th>
+
+          <th>Status</th>
+
+          <th>Records</th>
+
+          <th>Load Date</th>
+
+          <th>Errors</th>
+
+          <th>Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody *ngIf="paginatedFiles.length > 0">
+
+        <tr
+          *ngFor="
+          let file of paginatedFiles;
+          let i = index
+        "
+        >
+
+          <!-- SERIAL NUMBER -->
+          <td>
+
+            {{
+              ((currentPage - 1)
+              * itemsPerPage)
+              + i + 1
+            }}
+
+          </td>
+
+          <!-- FILE NAME -->
+          <td>
+
+            {{ file.filE_NAME }}
+
+          </td>
+
+          <!-- STATUS -->
+          <td>
+
+            <span
+              class="status-badge"
+
+              [ngClass]="{
+
+                'success-status':
+                (file.STATUS || file.status) === 'Success',
+
+                'failed-status':
+                (file.STATUS || file.status) === 'Failed',
+
+                'archive-status':
+                (file.STATUS || file.status) === 'Archived'
+              }"
+            >
+
+              {{ file.STATUS || file.status }}
+
+            </span>
+
+          </td>
+
+          <!-- RECORD COUNT -->
+          <td>
+
+            {{ file.recorD_COUNT }}
+
+          </td>
+
+          <!-- LOAD DATE -->
+          <td>
+
+            {{ file.loaD_DATE }}
+
+          </td>
+
+          <!-- ERRORS -->
+           <td>
+          <button
+  *ngIf="
+    (file.errors || file.ERRORS)
+  "
+  class="error-btn"
+  (click)="showErrors(
+    file.errors || file.ERRORS
+  )"
+>
+  View Errors
+</button>
+
+<span
+  *ngIf="
+    !(file.errors || file.ERRORS)
+  "
+>
+  No Errors
+</span>
+</td>
+
+ 
+
+          <!-- ACTIONS -->
+          <td class="action-buttons">
+
+           <button
+  *ngIf="
+    (file.STATUS || file.status) !== 'Archived'
+  "
+
+  class="archive-btn"
+
+  (click)="archive(file.id)"
+>
+  Archive
+</button>
+
+<button
+  *ngIf="
+    (file.STATUS || file.status) === 'Archived'
+  "
+
+  class="unarchive-btn"
+
+  (click)="unarchive(file.id)"
+>
+  Unarchive
+</button>
+
+          <button
+  *ngIf="role === 'Admin'"
+  class="delete-btn"
+  (click)="delete(file.id)"
+>
+  Delete
+</button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+      <tbody
+        *ngIf="
+          !isLoading &&
+          paginatedFiles.length === 0
+        "
+      >
+
+        <tr>
+
+          <td
+            colspan="7"
+            style="
+              text-align:center;
+              padding:30px;
+            "
+          >
+            No files found
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+
+    <button
+      (click)="currentPage = currentPage - 1"
+
+      [disabled]="
+        currentPage === 1
+      "
+    >
+      Previous
+    </button>
+
+    <span>
+
+      Page {{ currentPage }}
+
+    </span>
+
+    <button
+      (click)="currentPage = currentPage + 1"
+
+      [disabled]="
+        currentPage * itemsPerPage
+        >= filteredFiles.length
+      "
+    >
+      Next
+    </button>
+
+  </div>
+
+</div>
+<div
+  *ngIf="selectedErrors"
+  class="error-modal"
+>
+
+  <div class="error-content">
+
+    <h2>
+      Error Details
+    </h2>
+
+    <pre>
+{{ selectedErrors }}
+    </pre>
+
+    <button
+      (click)="selectedErrors = ''"
+    >
+      Close
+    </button>
+
+  </div>
+
+</div>

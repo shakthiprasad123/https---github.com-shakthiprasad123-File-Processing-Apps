@@ -1,0 +1,237 @@
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: #f4f6f9;
+}
+
+.dashboard-wrapper {
+padding: 25px;
+min-height: 100vh;
+background: #f4f6f9;
+}
+
+.top-bar {
+background: #1e3c72;
+color: white;
+padding: 20px 30px;
+border-radius: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 25px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.top-bar h1 {
+margin: 0;
+}
+
+.top-bar p {
+margin: 5px 0 0;
+}
+
+.nav-buttons,
+.top-bar div:last-child {
+display: flex;
+gap: 12px;
+}
+
+.nav-btn,
+.upload-btn,
+.archive-btn,
+.unarchive-btn,
+.delete-btn,
+.error-btn,
+.pagination button {
+border: none;
+padding: 10px 16px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+}
+
+.nav-btn {
+background: white;
+color: #1e3c72;
+}
+
+.logout-btn {
+border: none;
+padding: 10px 16px;
+border-radius: 8px;
+background: #dc3545;
+color: white;
+cursor: pointer;
+}
+
+.upload-card,
+.table-card {
+background: white;
+border-radius: 12px;
+padding: 20px;
+margin-top: 20px;
+box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.upload-left {
+display: flex;
+gap: 12px;
+align-items: center;
+}
+
+.upload-btn {
+background: #1e3c72;
+color: white;
+}
+
+.search-box {
+margin-top: 20px;
+}
+
+.search-box input {
+width: 100%;
+padding: 12px;
+border: 1px solid #ddd;
+border-radius: 8px;
+}
+
+.stats-container {
+margin-top: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+gap: 20px;
+}
+
+.stat-card {
+color: white;
+border-radius: 12px;
+padding: 20px;
+text-align: center;
+}
+
+.total-card {
+background: #1e3c72;
+}
+
+.success-card {
+background: #28a745;
+}
+
+.failed-card {
+background: #dc3545;
+}
+
+.archive-card {
+background: #6c757d;
+}
+
+.stat-card h2 {
+margin: 0;
+font-size: 32px;
+}
+
+.stat-card p {
+margin-top: 10px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+thead {
+background: #1e3c72;
+color: white;
+}
+
+th,
+td {
+padding: 14px;
+text-align: left;
+border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+background: #f8f9fa;
+}
+
+.status-badge,
+.role-badge {
+padding: 6px 12px;
+border-radius: 20px;
+color: white;
+font-size: 13px;
+font-weight: bold;
+}
+
+.success-status {
+background: #28a745;
+}
+
+.failed-status {
+background: #dc3545;
+}
+
+.archive-status {
+background: #6c757d;
+}
+
+.role-badge {
+background: #1e3c72;
+}
+
+.archive-btn {
+background: #ffc107;
+}
+
+.unarchive-btn {
+background: #17a2b8;
+color: white;
+}
+
+.delete-btn {
+background: #dc3545;
+color: white;
+}
+
+.error-btn {
+background: #6c757d;
+color: white;
+}
+
+.action-buttons {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.pagination {
+margin-top: 20px;
+display: flex;
+justify-content: center;
+gap: 20px;
+align-items: center;
+}
+
+.error-modal {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.error-content {
+background: white;
+width: 600px;
+max-width: 90%;
+padding: 25px;
+border-radius: 12px;
+}
+
+.loading {
+margin-top: 15px;
+color: #1e3c72;
+font-weight: bold;
+}

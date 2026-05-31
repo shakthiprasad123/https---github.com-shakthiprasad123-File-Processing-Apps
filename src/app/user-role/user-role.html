@@ -1,0 +1,99 @@
+<div class="dashboard-wrapper">
+
+  <div class="top-bar">
+
+    <div>
+
+      <h1>User Role Management</h1>
+
+      <p>
+        Manage user role assignments
+      </p>
+
+    </div>
+
+    <div class="nav-buttons">
+
+      <button
+        class="nav-btn"
+        routerLink="/welcome"
+      >
+        Home
+      </button>
+
+      <button
+        class="nav-btn"
+        routerLink="/dashboard"
+      >
+        Dashboard
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="stats-container">
+
+    <div class="stat-card total-card">
+
+      <h2>
+        {{ userRoleData.length }}
+      </h2>
+
+      <p>
+        Total User Mappings
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>User ID</th>
+
+          <th>Name</th>
+
+          <th>Email</th>
+
+          <th>Role</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let user of userRoleData">
+
+          <td>{{ user.userId }}</td>
+
+          <td>{{ user.name }}</td>
+
+          <td>{{ user.email }}</td>
+
+          <td>
+
+            <span class="role-badge">
+
+              {{ user.role }}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

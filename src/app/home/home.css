@@ -1,0 +1,50 @@
+.home-container {
+
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #11998e,
+    #38ef7d
+  );
+}
+
+.home-card {
+
+  background-color: white;
+
+  padding: 50px;
+
+  border-radius: 15px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.home-card h1 {
+
+  color: #11998e;
+
+  margin-bottom: 10px;
+}
+
+.home-card h2 {
+
+  color: #333;
+}
+
+.home-card p {
+
+  margin-top: 20px;
+
+  font-size: 18px;
+
+  color: green;
+}

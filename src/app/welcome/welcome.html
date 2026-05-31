@@ -1,0 +1,151 @@
+<div class="welcome-container">
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      File Processing System
+    </div>
+
+    <div class="nav-links">
+
+      <button
+        (click)="goToDashboard()"
+      >
+        Dashboard
+      </button>
+
+    <button
+  *ngIf="role === 'Admin'"
+  (click)="goToUserRoles()"
+>
+  User Roles
+</button>
+
+      <button
+        class="logout-btn"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero-section">
+
+    <h1>
+      Welcome to File Processing System
+    </h1>
+
+    <p>
+      A secure platform for uploading,
+      processing and monitoring trade files.
+    </p>
+
+    <button
+      class="hero-btn"
+      (click)="goToDashboard()"
+    >
+      Go To Dashboard
+    </button>
+
+  </div>
+
+  <!-- FEATURE CARDS -->
+
+  <div class="features">
+
+    <div class="feature-card">
+
+      <div class="icon">📂</div>
+
+      <h3>File Upload</h3>
+
+      <p>
+        Upload CSV and TXT files securely.
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <div class="icon">📊</div>
+
+      <h3>Dashboard Analytics</h3>
+
+      <p>
+        Monitor file processing status.
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <div class="icon">👥</div>
+
+      <h3>User Roles</h3>
+
+      <p>
+        Manage user access and permissions.
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <div class="icon">⚠️</div>
+
+      <h3>Error Tracking</h3>
+
+      <p>
+        View and analyze processing errors.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- PROJECT MODULES -->
+
+  <div class="modules-section">
+
+    <h2>
+      Project Features
+    </h2>
+
+    <div class="modules-grid">
+
+      <div>✓ Authentication</div>
+      <div>✓ File Upload</div>
+      <div>✓ Dashboard</div>
+      <div>✓ Search Files</div>
+      <div>✓ Archive Files</div>
+      <div>✓ Unarchive Files</div>
+      <div>✓ Delete Files</div>
+      <div>✓ Error Tracking</div>
+      <div>✓ User Role Management</div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>
+      File Processing System
+    </h3>
+
+    <p>
+      Angular • ASP.NET Core • SQL Server
+    </p>
+
+  </footer>
+
+</div>
