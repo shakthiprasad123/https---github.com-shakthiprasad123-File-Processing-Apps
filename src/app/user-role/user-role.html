@@ -4,10 +4,12 @@
 
     <div>
 
-      <h1>User Role Management</h1>
+      <h1>
+        User Role Management
+      </h1>
 
       <p>
-        Manage user role assignments
+        Manage Users And Roles
       </p>
 
     </div>
@@ -41,10 +43,22 @@
       </h2>
 
       <p>
-        Total User Mappings
+        Total Users
       </p>
 
     </div>
+
+  </div>
+
+  <div class="action-bar">
+
+    <button
+      *ngIf="role === 'Admin'"
+      class="add-user-btn"
+      (click)="showAddUserModal = true"
+    >
+      + Add User
+    </button>
 
   </div>
 
@@ -57,12 +71,13 @@
         <tr>
 
           <th>User ID</th>
-
           <th>Name</th>
-
           <th>Email</th>
-
           <th>Role</th>
+          <th>Change Role</th>
+          <th *ngIf="role === 'Admin'">
+  Actions
+</th>
 
         </tr>
 
@@ -70,29 +85,181 @@
 
       <tbody>
 
-        <tr *ngFor="let user of userRoleData">
+        <tr
+          *ngFor="
+          let user of
+          userRoleData
+          "
+        >
 
-          <td>{{ user.userId }}</td>
+          <td>
+            {{ user.userId }}
+          </td>
 
-          <td>{{ user.name }}</td>
+          <td>
+            {{ user.name }}
+          </td>
 
-          <td>{{ user.email }}</td>
+          <td>
+            {{ user.email }}
+          </td>
 
           <td>
 
-            <span class="role-badge">
+            <span
+  class="role-badge"
 
-              {{ user.role }}
+  [ngClass]="{
 
-            </span>
+    'admin-role':
+    user.role === 'Admin',
+
+    'administrator-role':
+    user.role === 'Administrator',
+
+    'wps-role':
+    user.role === 'WPS',
+
+    'user-role':
+    user.role === 'User'
+  }"
+>
+  {{ user.role }}
+</span>
 
           </td>
+
+         <td>
+          <select
+  (change)="changeRole(
+    user.userId,
+    $any($event.target).value
+  )"
+>
+
+  <option selected disabled>
+    Select Role
+  </option>
+
+  <option value="Admin">
+    Admin
+  </option>
+
+  <option value="Administrator">
+    Administrator
+  </option>
+
+  <option value="WPS">
+    WPS
+  </option>
+
+  <option value="User">
+    User
+  </option>
+
+</select>
+         </td>
+
+          <td *ngIf="role === 'Admin'">
+
+            <button
+              class="delete-btn"
+              (click)="deleteUser(user.userId)"
+            >
+              Delete
+            </button>
+
+          </td>
+
+ 
+
+
+
 
         </tr>
 
       </tbody>
 
     </table>
+
+  </div>
+
+</div>
+
+<div
+  *ngIf="showAddUserModal"
+  class="modal-overlay"
+>
+
+  <div class="modal-box">
+
+    <h2>
+      Add User
+    </h2>
+
+    <input
+      type="text"
+      placeholder="First Name"
+      [(ngModel)]="firstName"
+    >
+
+    <input
+      type="text"
+      placeholder="Last Name"
+      [(ngModel)]="lastName"
+    >
+
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+    >
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+    >
+
+    <select
+      [(ngModel)]="selectedRole"
+    >
+
+      <option value="Admin">
+        Admin
+      </option>
+
+      <option value="Administrator">
+        Administrator
+      </option>
+
+      <option value="WPS">
+        WPS
+      </option>
+
+      <option value="User">
+        User
+      </option>
+
+    </select>
+
+    <div class="modal-buttons">
+
+      <button
+        class="save-btn"
+        (click)="addUser()"
+      >
+        Save
+      </button>
+
+      <button
+        class="cancel-btn"
+        (click)="showAddUserModal = false"
+      >
+        Cancel
+      </button>
+
+    </div>
 
   </div>
 

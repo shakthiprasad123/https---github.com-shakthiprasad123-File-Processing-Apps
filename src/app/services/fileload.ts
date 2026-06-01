@@ -110,4 +110,34 @@ getUserRoles() {
     this.getHeaders()
   );
 }
+createUser(user: any) {
+
+  return this.http.post(
+    'http://localhost:5224/user',
+    user,
+    this.getHeaders()
+  );
+}
+
+updateUserRole(
+  userId: number,
+  roleId: number
+) {
+
+  return this.http.put(
+    'http://localhost:5224/userrole',
+    {
+      USR_ID: userId,
+      ROLE_ID: roleId
+    },
+    this.getHeaders()
+  );
+}
+deleteUser(id: number) {
+
+  return this.http.delete(
+    `http://localhost:5224/user/${id}`,
+    this.getHeaders()
+  );
+}
 }

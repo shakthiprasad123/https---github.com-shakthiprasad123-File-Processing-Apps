@@ -251,60 +251,57 @@ implements OnInit, AfterViewInit {
   }
   archive(id: number) {
 
+     console.log('ARCHIVE ID', id);
+
   this.fileService
     .archiveFile(id)
     .subscribe({
 
-      next: (res) => {
+      next: () => {
 
-        console.log(
-          'ARCHIVE SUCCESS'
-        );
+        const file =
+          this.files.find(
+            f => f.id === id
+          );
 
-        console.log(res);
+        if(file){
+          file.STATUS =
+            'Archived';
+        }
 
-        this.loadFiles();
-      },
+        this.filteredFiles =
+          [...this.files];
 
-      error: (err: any) => {
+        this.cdr.detectChanges();
 
-        console.log(
-          'ARCHIVE ERROR'
-        );
-
-        console.log(err);
+        alert('File Archived');
       }
     });
 }
-
 unarchive(id: number) {
 
   this.fileService
     .unarchiveFile(id)
     .subscribe({
 
-      next: (res) => {
+      next: () => {
 
-        console.log(
-          'UNARCHIVE SUCCESS'
-        );
+        const file =
+          this.files.find(
+            f => f.id === id
+          );
 
-        console.log(res);
+        if(file){
+          file.STATUS =
+            'Success';
+        }
 
-        this.loadFiles();
-      },
+        this.filteredFiles =
+          [...this.files];
 
-      error: (err: any) => {
+        this.cdr.detectChanges();
 
-        console.log(
-          'UNARCHIVE ERROR'
-        );
-
-        console.log(err);
-
-        alert(
-          JSON.stringify(err)
-        );
+        alert('File Unarchived');
       }
     });
 }

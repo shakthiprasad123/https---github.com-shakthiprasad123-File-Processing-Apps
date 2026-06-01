@@ -53,24 +53,39 @@
   <!-- UPLOAD -->
   <div class="upload-card">
 
-    <div class="upload-left">
+  <div class="upload-container">
 
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-      />
+    <label class="custom-file-upload">
 
-      <button
-        class="upload-btn"
-        (click)="uploadFile()"
-      >
-        Upload File
-      </button>
+  Choose File
 
-    </div>
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+  >
+
+</label>
+
+<span class="file-name">
+
+  {{
+    selectedFile
+    ? selectedFile.name
+    : 'No file chosen'
+  }}
+
+</span>
+
+    <button
+      class="upload-btn"
+      (click)="uploadFile()"
+    >
+      Upload File
+    </button>
 
   </div>
 
+</div>
   <!-- SEARCH -->
   <div class="search-box">
 
