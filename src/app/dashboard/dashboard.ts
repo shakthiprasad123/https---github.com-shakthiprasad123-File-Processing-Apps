@@ -337,6 +337,7 @@ delete(id: number) {
       }
     });
 }
+
 showErrors(errors: any) {
 
   console.log(
@@ -362,4 +363,45 @@ showErrors(errors: any) {
 
     this.router.navigate(['/']);
   }
+  exportData() {
+
+  let csv =
+'ID,Filename,Status,RecordCount,LoadDate,errors\n';
+
+  this.files.forEach(file => {
+
+    csv +=
+`${file.id || file.filE_ID},${file.filE_NAME},${file.STATUS || file.status},${file.recorD_COUNT},${file.loaD_DATE},${file.errors}\n`;
+
+  });
+
+  const blob =
+    new Blob(
+      [csv],
+      {
+        type: 'text/csv'
+      }
+    );
+
+  const url =
+    window.URL.createObjectURL(
+      blob
+    );
+
+  const a =
+    document.createElement(
+      'a'
+    );
+
+  a.href = url;
+
+  a.download =
+    'FileReport.csv';
+
+  a.click();
+
+  window.URL.revokeObjectURL(
+    url
+  );
+}
 }
